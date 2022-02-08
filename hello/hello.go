@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+const monitoringTimes = 3
+const monitoringDelay = 5
+
 func main() {
 
 	showIntro()
@@ -50,7 +53,8 @@ func readCommand() int {
 	var command int
 	fmt.Scan(&command)
 	fmt.Println("o comando escolhido foi,", command)
-
+	fmt.Println("")
+	
 	return command
 }
 
@@ -62,13 +66,14 @@ func startMonitoring() {
 		"https://www.google.com.br/",
 	}
 
-	for i := 0; i < 5; i++ {
+	for i := 0; i < monitoringTimes; i++ {
 		for i, site := range sites {
 			fmt.Println("Testando site", i, ":", site)
 			verifySite(site)
 		}
 
-		time.Sleep(5 * time.Second)
+		time.Sleep(monitoringDelay * time.Second)
+		fmt.Println("")
 	}
 	
 	fmt.Println("")
