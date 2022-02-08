@@ -9,7 +9,7 @@ func main() {
 	fmt.Println("2 - exibir logs")
 	fmt.Println("0 - sair do programa")
 
-	var command := readCommand()
+	command := readCommand()
 
 	switch command {
 	case 1:
