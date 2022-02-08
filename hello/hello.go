@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 	"os"
-	"net/http"
+	//"net/http"
 )
 
 func main() {
 
 	showIntro()
-	
+
 	for {
 		showMenu()	
 	
@@ -55,7 +55,13 @@ func readCommand() int {
 
 func startMonitoring() {
 	fmt.Println("Monitorando...")
-	site := "https://www.alura.com.br/"
+	var sites [4]string
+	sites[0] = "https://www.alura.com.br/"
+	sites[1] = "https://www.google.com.br/"
+	sites[2] = "https://www.instagram.com.br/"
+	sites[3] = "https://www.facebook.com.br/"
+
+	
 	response, _ := http.Get(site)
 
 	if response.StatusCode == 200 {
