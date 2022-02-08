@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	//"net/http"
+	"net/http"
 )
 
 func main() {
@@ -55,13 +55,20 @@ func readCommand() int {
 
 func startMonitoring() {
 	fmt.Println("Monitorando...")
-	var sites [4]string
-	sites[0] = "https://www.alura.com.br/"
-	sites[1] = "https://www.google.com.br/"
-	sites[2] = "https://www.instagram.com.br/"
-	sites[3] = "https://www.facebook.com.br/"
+	sites := []string{
+		"https://www.alura.com.br/",
+		"https://www.caelum.com.br/",
+		"https://www.google.com.br/",
+	}
 
+	for i, site := range sites {
+		fmt.Println("Testando site", i, ":", site)
+		verifySite(site)
+	}
 	
+}
+
+func verifySite(site string) {
 	response, _ := http.Get(site)
 
 	if response.StatusCode == 200 {
@@ -69,5 +76,4 @@ func startMonitoring() {
 	}else {
 		fmt.Println("site:", site, "está com problemas. Status Code:", response.StatusCode)
 	}
-	
 }
