@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"net/http"
+	"os"
+	"time"
 )
 
 func main() {
@@ -61,10 +62,16 @@ func startMonitoring() {
 		"https://www.google.com.br/",
 	}
 
-	for i, site := range sites {
-		fmt.Println("Testando site", i, ":", site)
-		verifySite(site)
+	for i := 0; i < 5; i++ {
+		for i, site := range sites {
+			fmt.Println("Testando site", i, ":", site)
+			verifySite(site)
+		}
+
+		time.Sleep(5 * time.Second)
 	}
+	
+	fmt.Println("")
 	
 }
 
