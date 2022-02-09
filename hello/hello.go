@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -96,12 +99,26 @@ func getSitesFromFile() []string {
 	var sites []string
 
 	file, err := os.Open("sitesToMonitor.txt")
-
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
 
-	fmt.Println(file)
+	reader := bufio.NewReader(file)
+
+	for {
+		line, err := reader.ReadString('\n')
+		
+		line = strings.TrimSpace(line)
+
+		sites = append(sites, line)
+
+		if err == io.EOF {
+			break
+		}
+		
+	}
+
+	file.Close()
 
 	return sites
 }
