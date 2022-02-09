@@ -13,7 +13,7 @@ const monitoringDelay = 5
 func main() {
 
 	showIntro()
-
+	getSitesFromFile()
 	for {
 		showMenu()	
 	
@@ -60,11 +60,8 @@ func readCommand() int {
 
 func startMonitoring() {
 	fmt.Println("Monitorando...")
-	sites := []string{
-		"https://www.alura.com.br/",
-		"https://www.caelum.com.br/",
-		"https://www.google.com.br/",
-	}
+
+	sites := getSitesFromFile()
 
 	for i := 0; i < monitoringTimes; i++ {
 		for i, site := range sites {
@@ -81,11 +78,30 @@ func startMonitoring() {
 }
 
 func verifySite(site string) {
-	response, _ := http.Get(site)
+	response, err := http.Get(site)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
 
 	if response.StatusCode == 200 {
 		fmt.Println("site:", site, "carregado com sucesso!")
 	}else {
 		fmt.Println("site:", site, "está com problemas. Status Code:", response.StatusCode)
 	}
+}
+
+func getSitesFromFile() []string {
+
+	var sites []string
+
+	file, err := os.Open("sitesToMonitor.txt")
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+
+	fmt.Println(file)
+
+	return sites
 }
