@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
@@ -27,7 +28,7 @@ func main() {
 		case 1:
 			startMonitoring()
 		case 2:
-			fmt.Println("Exibindo logs...")
+			showLogs()
 		case 0: 
 			fmt.Println("Saindo do programa...")
 			os.Exit(0)
@@ -141,4 +142,17 @@ func registerLog(site string, status bool) {
 	file.WriteString(logString)
 
 	file.Close()
+}
+
+func showLogs(){
+	fmt.Println("Exibindo logs...")
+
+	file, err := ioutil.ReadFile("siteStatusLog.txt")
+
+	if err != nil {
+		fmt.Println("Error", err)
+	}
+
+	fmt.Println(string(file))
+	
 }
