@@ -24,5 +24,6 @@ func main() {
 	brenoAccount.titular = "Gabriela"
 	brenoAccount.balance = 500
 
+	fmt.Println(brenosAccount)
 	fmt.Println(*brenoAccount)
 }
