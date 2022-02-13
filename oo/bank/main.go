@@ -19,5 +19,10 @@ func main() {
 		125.50,
 	}
 
-	fmt.Println(brenosAccount)
+	var brenoAccount *CheckingAccount
+	brenoAccount = new(CheckingAccount)
+	brenoAccount.titular = "Gabriela"
+	brenoAccount.balance = 500
+
+	fmt.Println(*brenoAccount)
 }
