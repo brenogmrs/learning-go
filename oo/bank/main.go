@@ -17,7 +17,7 @@ func (a *CheckingAccount) withdraw(value float64) string {
 
 		return "Value withdrawed successfully!"
 	} else {
-		return "Insuficient funds!"
+		return "Insuficient funds"
 	}
 
 }
