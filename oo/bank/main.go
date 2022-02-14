@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type CheckingAccount struct {
-	titular       string
+	owner         string
 	agencyNumber  int
 	accountNumber int
 	balance       float64
@@ -32,13 +32,29 @@ func (a *CheckingAccount) deposit(amount float64) (string, float64) {
 	}
 }
 
-func main() {
-	ccAccount := CheckingAccount{
-		"Breno",
-		234,
-		123456,
-		500,
+func (a *CheckingAccount) transfer(amount float64, destinationAccount *CheckingAccount) bool {
+	if amount > 0 && amount < a.balance {
+		a.balance -= amount
+		destinationAccount.deposit(amount)
+
+		return true
 	}
 
-	fmt.Println(ccAccount.deposit(5000.))
+	return false
+}
+
+func main() {
+	ccAccount := CheckingAccount{
+		owner:   "Breno",
+		balance: 300,
+	}
+
+	ccAccount2 := CheckingAccount{
+		owner:   "Teste2",
+		balance: 100,
+	}
+
+	status := ccAccount.transfer(200., &ccAccount2)
+	fmt.Println(status)
+	fmt.Println(ccAccount, ccAccount2)
 }
