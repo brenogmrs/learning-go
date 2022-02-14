@@ -3,10 +3,10 @@ package main
 import "fmt"
 
 type CheckingAccount struct {
-	titular 	  string
+	titular       string
 	agencyNumber  int
 	accountNumber int
-	balance 	  float64
+	balance       float64
 }
 
 func (a *CheckingAccount) withdraw(value float64) string {
@@ -22,6 +22,15 @@ func (a *CheckingAccount) withdraw(value float64) string {
 
 }
 
+func (a *CheckingAccount) deposit(amount float64) (string, float64) {
+	if amount > 0 {
+		a.balance += amount
+
+		return "Amount deposited successfully", a.balance
+	} else {
+		return "Invalid deposit amount", a.balance
+	}
+}
 
 func main() {
 	ccAccount := CheckingAccount{
@@ -31,8 +40,5 @@ func main() {
 		500,
 	}
 
-	withdrawValue := -100.
-	
-	fmt.Println(ccAccount.withdraw(withdrawValue))
-	fmt.Println(ccAccount)
+	fmt.Println(ccAccount.deposit(5000.))
 }
