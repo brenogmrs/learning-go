@@ -15,12 +15,23 @@ func main() {
 		Occupation: "it",
 	}
 
-	ccAccount := accounts.CheckingAccount{
-		Owner: customer1,
+	scAccount := accounts.SavingsAccount{
+		Owner:         customer1,
+		AgencyNumber:  123,
+		AccountNumber: 123123,
+		Operation:     1,
 	}
 
-	ccAccount.Deposit(200)
+	customer2 := customers.AccountOwner{
+		Name:       "Teste2",
+		Cpf:        "123123",
+		Occupation: "ti",
+	}
 
-	fmt.Println(ccAccount.GetBalance())
+	ccAccount := accounts.CheckingAccount{
+		Owner: customer2,
+	}
+
+	fmt.Println(scAccount, ccAccount)
 
 }

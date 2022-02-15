@@ -5,10 +5,9 @@ import (
 )
 
 type CheckingAccount struct {
-	Owner         customers.AccountOwner
-	AgencyNumber  int
-	AccountNumber int
-	balance       float64
+	Owner                       customers.AccountOwner
+	AgencyNumber, AccountNumber int
+	balance                     float64
 }
 
 func (a *CheckingAccount) Withdraw(amount float64) string {
