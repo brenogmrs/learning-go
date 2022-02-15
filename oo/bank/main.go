@@ -2,15 +2,16 @@ package main
 
 import (
 	"fmt"
+	accounts "github.com/oo/bank/accounts"
 )
 
 func main() {
-	ccAccount := CheckingAccount{
+	ccAccount := accounts.CheckingAccount{
 		Owner:   "Breno",
 		Balance: 300,
 	}
 
-	ccAccount2 := CheckingAccount{
+	ccAccount2 := accounts.CheckingAccount{
 		Owner:   "Teste2",
 		Balance: 100,
 	}
