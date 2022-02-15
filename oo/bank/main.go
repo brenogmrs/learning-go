@@ -7,6 +7,14 @@ import (
 	"github.com/oo/bank/customers"
 )
 
+type verifyAccount interface {
+	Withdraw(float64) string
+}
+
+func payBoleto(account verifyAccount, BoletoValue float64) {
+	account.Withdraw(BoletoValue)
+}
+
 func main() {
 
 	customer1 := customers.AccountOwner{
@@ -32,6 +40,16 @@ func main() {
 		Owner: customer2,
 	}
 
-	fmt.Println(scAccount, ccAccount)
+	ccAccount.Deposit(200)
+
+	payBoleto(&ccAccount, 60)
+
+	fmt.Println(ccAccount.GetBalance())
+
+	scAccount.Deposit(200)
+
+	payBoleto(&scAccount, 60)
+
+	fmt.Println(scAccount.GetBalance())
 
 }
