@@ -7,8 +7,9 @@ import (
 func main() {
 
 	slice := []int{10, 20, 30, 40}
+	anotherSlice := []int{50, 60, 70, 80}
 
-	slice = append(slice, 50)
+	slice = append(slice, anotherSlice...)
 
 	total := 0
 
