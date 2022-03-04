@@ -13,14 +13,7 @@ func main() {
 
 	Teste(slice...)
 
-	total := 0
-
-	for i, val := range slice {
-		fmt.Println("At index", i, "we have the value", val)
-		total += val
-	}
-
-	fmt.Println(total)
+	SlicingASlice()
 
 }
 func Teste(inteiros ...int) {
@@ -30,4 +23,21 @@ func Teste(inteiros ...int) {
 		fmt.Println("At index", i, "we have the value", val)
 		total += val
 	}
+}
+
+func SlicingASlice() {
+	//                     0             1           2          3              4
+	flavors := []string{"pepperoni", "mozzarella", "marg", "pineapple", "calabrezza"}
+
+	//deletando valor de uma slice
+	flavors = append(flavors[:3], flavors[3:]...)
+
+	// acessando até o item 2 (1 off)
+	slice := flavors[:3]
+
+	// acessando do item 3 até o final
+	slice = flavors[3:]
+
+	fmt.Println(slice)
+	fmt.Println(flavors)
 }
