@@ -11,6 +11,8 @@ func main() {
 
 	slice = append(slice, anotherSlice...)
 
+	Teste(slice...)
+
 	total := 0
 
 	for i, val := range slice {
@@ -20,4 +22,12 @@ func main() {
 
 	fmt.Println(total)
 
+}
+func Teste(inteiros ...int) {
+	total := 0
+
+	for i, val := range inteiros {
+		fmt.Println("At index", i, "we have the value", val)
+		total += val
+	}
 }
