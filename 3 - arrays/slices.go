@@ -11,10 +11,21 @@ func main() {
 
 	slice = append(slice, anotherSlice...)
 
-	Teste(slice...)
+	//Teste(slice...)
 
-	SlicingASlice()
+	//SlicingASlice()
 
+	// internal arrays
+
+	slice2 := make([]float32, 10, 11)
+	fmt.Println(slice2)
+	fmt.Println(len(slice2)) // length
+	fmt.Println(cap(slice2)) // capacity
+
+	slice2 = append(slice2, 2)
+	fmt.Println(slice2)
+	slice2 = append(slice2, 2)
+	fmt.Println(cap(slice2))
 }
 func Teste(inteiros ...int) {
 	total := 0
