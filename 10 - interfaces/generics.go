@@ -7,7 +7,7 @@ func generic(i interface{}) {
 }
 
 func main() {
-	fmt.Println("Generic types ")
+	fmt.Println("Generic types")
 	generic("string")
 	generic(1)
 	generic(true)
