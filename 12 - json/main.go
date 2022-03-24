@@ -17,12 +17,24 @@ func main() {
 	d := dog{"Rex", "Dalmata", 2}
 	fmt.Println(d)
 
-	json, error := json.Marshal(d)
+	jsonD1, error := json.Marshal(d)
 
 	if error != nil {
 		log.Fatal(error)
 	}
 
-	fmt.Println(bytes.NewBuffer(json))
+	fmt.Println(bytes.NewBuffer(jsonD1))
+
+	d2 := map[string]string{
+		"nome":  "Lisa",
+		"breed": "poodle",
+	}
+
+	jsonD2, error := json.Marshal(d2)
+	if error != nil {
+		log.Fatal(error)
+	}
+
+	fmt.Println(bytes.NewBuffer(jsonD2))
 
 }
